@@ -13,6 +13,7 @@ const Navbar = () => {
    const loginLogout = <ul className="menu menu-horizontal px-1  font-semibold">
       <Link onClick={handleLogout}><li><span>Logout</span></li></Link>
       <Link to='/login'><li><span>Login</span></li></Link>
+      <Link to='/register'><li><span>Register</span></li></Link>
    </ul>
 
    const navItems = <ul className="menu menu-horizontal  font-semibold px-1">
