@@ -7,6 +7,7 @@ import useAuth from "../../Hooks/useAuth";
 
 
 const Login = () => {
+
    const [message, setMessage] = useState('');
    const { loginWithEmailAndPass, loginWithGoogle } = useAuth();
    const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -61,7 +62,6 @@ const Login = () => {
                         </label>
                         <input type="password"  {...register("password", {
                            required: true,
-
 
                         })} placeholder="required" className="input input-bordered" />
 
