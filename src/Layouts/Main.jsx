@@ -1,3 +1,4 @@
+import Footer from "../Pages/Shared/Footer/Footer";
 import Navbar from "../Pages/Shared/NavBar/Navbar";
 
 
@@ -6,6 +7,7 @@ const Main = () => {
       <>
          <Navbar />
          <p>This is main lay out</p>
+         <Footer />
       </>
    );
 };
