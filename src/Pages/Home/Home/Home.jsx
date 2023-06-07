@@ -9,9 +9,9 @@ const Home = () => {
          <PopularClasses />
          <PopularInstuctors />
 
-         {/* <div className="text-center">
-            <h2 className="text-4xl font-semibold">Popular <span className="text-yellow-500">Classes</span> </h2>
-         </div> */}
+         <div className="text-center">
+            <h2 className="text-4xl font-semibold">Extra Section <span className="text-yellow-500">ToDo</span> </h2>
+         </div>
       </div>
    );
 };
