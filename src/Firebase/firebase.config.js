@@ -4,13 +4,14 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+
 const firebaseConfig = {
-   apiKey: "AIzaSyAwQFTF4UwUgnQL6DZawHv6ZZz_ppWtPBE",
-   authDomain: "lexi-learn-66370.firebaseapp.com",
-   projectId: "lexi-learn-66370",
-   storageBucket: "lexi-learn-66370.appspot.com",
-   messagingSenderId: "380640683496",
-   appId: "1:380640683496:web:82d9e66e111ebce436f05d"
+   apiKey: import.meta.env.VITE_APIKEY,
+   authDomain: import.meta.env.VITE_AUTHDOMAIN,
+   projectId: import.meta.env.VITE_PROJECTID,
+   storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+   messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+   appId: import.meta.env.VITE_APPID
 };
 
 // Initialize Firebase
