@@ -1,0 +1,68 @@
+[
+   {
+      "className": "Spanish Language",
+      "classImage": "https://i.ibb.co/G0RMqtd/clspic1.jpg",
+      "instructorName": "Maria Rodriguez",
+      "instructorImage": "https://i.ibb.co/nCL4GkF/ins1.jpg",
+      "instructorEmail": "maria@example.com",
+      "status": "approved",
+      "availableSeats": 77,
+      "enrolled": 56,
+      "price": 50
+   },
+   {
+      "className": "French Language",
+      "classImage": "https://i.ibb.co/vHFB1jJ/clspic2.jpg",
+      "instructorName": "Jeanne Dubois",
+      "instructorImage": "https://i.ibb.co/Sc1DCcZ/ins2.jpg",
+      "instructorEmail": "jeanne@example.com",
+      "status": "approved",
+      "availableSeats": 45,
+      "enrolled": 43,
+      "price": 60
+   },
+   {
+      "className": "German Language",
+      "classImage": "https://i.ibb.co/VCkq9PJ/clspic3.jpg",
+      "instructorName": "Hans Schmidt",
+      "instructorImage": "https://i.ibb.co/4RKNKK2/ins3.jpg",
+      "instructorEmail": "hans@example.com",
+      "status": "approved",
+      "availableSeats": 30,
+      "enrolled": 25,
+      "price": 55
+   },
+   {
+      "className": "Chinese Language",
+      "classImage": "https://i.ibb.co/xfW3WSr/clspic4.jpg",
+      "instructorName": "Li Wei",
+      "instructorImage": "https://i.ibb.co/qMPXSsM/ins4.jpg",
+      "instructorEmail": "liwei@example.com",
+      "status": "approved",
+      "availableSeats": 49,
+      "enrolled": 35,
+      "price": 70
+   },
+   {
+      "className": "Japanese Language",
+      "instructorImage": "https://i.ibb.co/zGpkxKj/clspic5.jpg",
+      "classImage": "https://i.ibb.co/wcCXy5y/ins5.jpg",
+      "instructorName": "Yuki Nakamura",
+      "instructorEmail": "yuki@example.com",
+      "status": "approved",
+      "availableSeats": 60,
+      "enrolled": 55,
+      "price": 65
+   },
+   {
+      "className": "Russian Language",
+      "instructorImage": "https://i.ibb.co/Pz7zpD0/clspic6.jpg",
+      "classImage": "https://i.ibb.co/8D10JKm/ins6.jpg",
+      "instructorName": "Sergei Ivanov",
+      "instructorEmail": "sergei@example.com",
+      "status": "approved",
+      "availableSeats": 55,
+      "enrolled": 40,
+      "price": 55
+   }
+]
