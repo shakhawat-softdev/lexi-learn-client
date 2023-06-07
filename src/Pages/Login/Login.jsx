@@ -3,14 +3,17 @@ import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
-
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
-
    const [message, setMessage] = useState('');
    const { loginWithEmailAndPass, loginWithGoogle } = useAuth();
    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+   const location = useLocation();
+   const from = location.state?.from?.pathname || '/';
+   const navigate = useNavigate();
+
 
    const onSubmit = data => {
       const { email, password } = data;
@@ -19,6 +22,7 @@ const Login = () => {
          .then(resut => {
             const loggedUser = resut.user;
             console.log(loggedUser);
+            navigate(from);
             setMessage('Login successful!');
             setMessage('');
          })
@@ -33,6 +37,7 @@ const Login = () => {
          .then(result => {
             const loggedUser = result.user;
             console.log(loggedUser);
+            navigate(from);
          })
          .catch(error => {
             console.log(error.message);
