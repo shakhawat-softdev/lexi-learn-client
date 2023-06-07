@@ -1,0 +1,38 @@
+[
+   {
+      "userName": "Maria Rodriguez",
+      "userEmail": "maria@example.com",
+      "userImage": "https://i.ibb.co/nCL4GkF/ins1.jpg",
+      "role": "instructor"
+   },
+   {
+      "userName": "Jeanne Dubois",
+      "userEmail": "jeanne@example.com",
+      "userImage": "https://i.ibb.co/Sc1DCcZ/ins2.jpg",
+      "role": "instructor"
+   },
+   {
+      "userName": "Hans Schmidt",
+      "userEmail": "hans@example.com",
+      "userImage": "https://i.ibb.co/Pt0X9nk/insup3.jpg",
+      "role": "instructor"
+   },
+   {
+      "userName": "Li Wei",
+      "userEmail": "liwei@example.com",
+      "userImage": "https://i.ibb.co/8DwMX76/insup4.jpg",
+      "role": "instructor"
+   },
+   {
+      "userName": "Yuki Nakamura",
+      "userEmail": "yuki@example.com",
+      "userImage": "https://i.ibb.co/wcCXy5y/ins5.jpg",
+      "role": "instructor"
+   },
+   {
+      "userName": "Sergei Ivanov",
+      "userEmail": "sergei@example.com",
+      "userImage": "https://i.ibb.co/8D10JKm/ins6.jpg",
+      "role": "instructor"
+   }
+]

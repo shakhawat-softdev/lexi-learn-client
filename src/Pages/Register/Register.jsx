@@ -1,16 +1,17 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import img1 from '../../assets/images/loginRegister/register.jpg'
 import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
 import { updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 
 
 const Register = () => {
    const [message, setMessage] = useState('');
-   const { registerNewUser } = useAuth();
-   // console.log(registerNewUser);
+   const { registerNewUser, logout } = useAuth();
+   const navigate = useNavigate()
 
 
    const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -21,11 +22,32 @@ const Register = () => {
       //Register User
       registerNewUser(email, password)
          .then(result => {
-            setMessage('Registation Sussessful')
+            reset()
             const loggedUser = result.user;
-            updeteUserProfile(loggedUser, name, photoURL)
+            // console.log(loggedUser);
+            const userInfo = { userName: name, userEmail: email, userImage: photoURL, role: 'student' };
+            fetch('http://localhost:5000/users', {
+               method: 'POST',
+               headers: { 'content-type': 'application/json' },
+               body: JSON.stringify(userInfo)//
+            })
+               .then(res => res.json())
+               .then(data => {
+                  console.log(data.insertedId);
 
-            console.log(loggedUser);
+                  //TODO: if inserted successfully
+                  if (data.insertedId) {
+                     Swal.fire({ position: 'center', icon: 'success', title: 'Registation Successful!!', showConfirmButton: false, timer: 1500 });
+
+                     updeteUserProfile(loggedUser, name, photoURL);
+                     navigate('/login');
+                     logout()
+                        .then(result => { })
+                        .catch(error => console.log(error.message))
+
+                  }
+               })
+
          })
          .catch(error => {
             console.log(error.message)
@@ -38,7 +60,7 @@ const Register = () => {
             displayName: userName, photoURL: imageUrl
          })
             .then(() => {
-               console.log('user name updated');
+               // console.log('user name, image updated in firebase');
             })
             .catch(error => console.error(error.message))
       };

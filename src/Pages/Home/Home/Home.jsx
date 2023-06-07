@@ -8,7 +8,6 @@ const Home = () => {
          <MainSlideBanner />
          <PopularClasses />
          <PopularInstuctors />
-
          <div className="text-center">
             <h2 className="text-4xl font-semibold">Extra Section <span className="text-yellow-500">ToDo</span> </h2>
          </div>

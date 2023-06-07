@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import { useLocation, useNavigate } from 'react-router-dom';
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -37,7 +38,24 @@ const Login = () => {
          .then(result => {
             const loggedUser = result.user;
             console.log(loggedUser);
-            navigate(from);
+
+            const userInfo = { userName: loggedUser.displayName, userEmail: loggedUser.email, userImage: loggedUser?.photoURL, role: 'student' };
+            fetch('http://localhost:5000/users', {
+               method: 'POST',
+               headers: { 'content-type': 'application/json' },
+               body: JSON.stringify(userInfo)//
+            })
+               .then(res => res.json())
+               .then(data => {
+                  // console.log(data.insertedId);
+
+                  if (data.insertedId) {
+                     Swal.fire({ position: 'center', icon: 'success', title: 'Login Successful!!', showConfirmButton: false, timer: 1500 });
+                     navigate(from, { replace: true });
+                  }
+
+                  navigate(from, { replace: true });
+               })
          })
          .catch(error => {
             console.log(error.message);
@@ -77,7 +95,7 @@ const Login = () => {
 
                      <div className="form-control mt-6">
                         {message && <h2 className="text-red-600">{message}</h2>}
-                        <input className="btn btn-primary" type="submit" value="Register" />
+                        <input className="btn btn-primary" type="submit" value="Login" />
                      </div>
                   </form>
 

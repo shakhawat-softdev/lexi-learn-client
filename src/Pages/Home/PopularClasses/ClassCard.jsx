@@ -4,7 +4,7 @@ const ClassCard = ({ item }) => {
 
    // console.log(item);
    const { classImage, className } = item;
-   console.log(classImage);
+   // console.log(classImage);
 
    return (
       <div className="card w-96 bg-base-100 shadow-xl">
