@@ -1,23 +1,27 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import useSelectedCart from '../Hooks/useSelectedCart';
 
 const Dashbord = () => {
-   const isStudent = true;
+   const [selectedClass, refetch] = useSelectedCart()
 
+   const isStudent = true;
    //For all User
    const sharedNavItems =
       <>
-         <Link to={'/'}><li><a>Home</a></li></Link>
-         <Link to={'/classes'}><li><a>Classes</a></li></Link>
+         <Link to={'/'}><li className='btn'>Home</li></Link>
+         <Link to={'/classes'}><li className='btn'>Classes</li></Link>
       </>
 
    //For Student
+   // const total = selectedClass?.reduce((accumulator, currentPrice) => accumulator + currentPrice.price, 0)
    const studentNavItems =
       <>
-         <Link to={'/dashbord/studentHome'}><li><a> My Home</a></li></Link>
-         <Link to={'/dashbord/mySelectedClasses'}><li><a> My Selected Classes</a></li></Link>
-         <Link to={'/dashbord/studentHome'}><li><a> My Enrolled Classes</a></li></Link>
-         <Link to={'/dashbord/studentHome'}><li><a> Payment</a></li></Link>
+         <Link to={'/dashbord/studentHome'}><li className='btn'> My Home</li></Link>
+         <Link to={'/dashbord/mySelectedClasses'}><li className='btn'> My Selected Classes {selectedClass?.length || 0}</li></Link>
+         <Link to={'/dashbord/enrolled'}><li className='btn'> My Enrolled Classes</li></Link>
+         <Link to={'/dashbord/payment'}><li className='btn'> Payment</li></Link>
+         <Link to={'/dashbord/paymentsHistory'}><li className='btn'>Payment History</li></Link>
       </>
 
 
@@ -38,8 +42,6 @@ const Dashbord = () => {
                <div className="divider"></div>
                {sharedNavItems}
             </ul>
-
-
          </div>
       </div>
    );

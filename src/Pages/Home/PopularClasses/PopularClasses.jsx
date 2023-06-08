@@ -8,7 +8,7 @@ const PopularClasses = () => {
       const res = await fetch('http://localhost:5000/classes')
       return res.json()
    })
-   console.log(classes);
+   // console.log(classes);
 
 
    return (
