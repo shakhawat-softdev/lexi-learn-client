@@ -24,14 +24,14 @@ const Navbar = () => {
       <Link to='/'><li><span>Home</span></li></Link>
       <Link to='/instructors'><li><span>Instructors</span></li></Link>
       <Link to='/classes'><li><span>Classes</span></li></Link>
-      <Link to='/'><li><span>Dashboard </span></li></Link>
+      <Link to='/dashbord'><li><span>Dashboard </span></li></Link>
    </ul>
 
    const navItemsDropdown = <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
       <Link to='/'><li><span>Home</span></li></Link>
       <Link to='/instructors'><li><span>Instructors</span></li></Link>
       <Link to='/classes'><li><span>Classes</span></li></Link>
-      <Link to='/'><li><span>Dashboard </span></li></Link>
+      <Link to='/dashbord'><li><span>Dashboard </span></li></Link>
    </ul>
 
 

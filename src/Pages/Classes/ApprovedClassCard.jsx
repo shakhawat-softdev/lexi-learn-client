@@ -1,10 +1,14 @@
 
 
 const ApprovedClassCard = ({ item }) => {
-   const { className, classImage, instructorName, instructorImage, instructorEmail, availableSeats, enrolled, price } = item;
+   const { _id, className, classImage, instructorName, instructorImage, instructorEmail, availableSeats, enrolled, price } = item;
 
    const isAdmin = false;
    const isInstructor = false;
+
+   const handleSelectClass = () => {
+
+   }
 
    // console.log(item)
    return (
@@ -16,7 +20,7 @@ const ApprovedClassCard = ({ item }) => {
             <p>Available seats:{availableSeats}</p>
             <p>Price: ${price}</p>
             <div className="card-actions justify-end">
-               <button className="btn btn-active btn-secondary" disabled={(availableSeats < 0) || isAdmin || isInstructor}>Select</button>
+               <button onClick={() => handleSelectClass()} className="btn btn-active btn-secondary" disabled={(availableSeats < 0) || isAdmin || isInstructor}>Select</button>
             </div>
          </div>
       </div>
