@@ -22,8 +22,10 @@ const EnrolledClasses = () => {
 
    return (
       <div>
-         <div className="text-center">
-            <h2 className="text-4xl font-semibold my-4">Total Enrolled Classes: {enrolled?.length} </h2>
+         <div >
+            <div className="text-center">
+               <h2 className="text-4xl font-semibold my-4">Total Enrolled Classes: {enrolled?.length} </h2>
+            </div>
 
             <div className="overflow-x-auto">
                <table className="table">

@@ -18,9 +18,6 @@ const HistotyCard = ({ item, index }) => {
 
                <h2 className='font-bold'>Order Statue: <span className='font-normal'> {orderStatus}</span> </h2>
 
-
-
-
             </div>
          </div>
       </div>
