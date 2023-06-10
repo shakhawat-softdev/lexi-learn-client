@@ -67,9 +67,10 @@ const ManageUsersTable = ({ item, index }) => {
             <td> {userName} </td>
             <td>{userEmail}</td>
             <td className="flex flex-row justify-center items-center gap-1 text-center content-center m-auto">
-               <button onClick={() => handleMakeAdmin(_id)} className="btn btn-accent btn-xs" disabled={(role == "admin")}>Make Instructor</button>
 
-               <button onClick={() => handleMakeIntructor(_id)} className="btn btn-success btn-xs" disabled={(role == "instructor")} > Make Admin </button>
+               <button onClick={() => handleMakeAdmin(_id)} className="btn btn-accent btn-xs" disabled={(role == "admin")}>Make Admin</button>
+
+               <button onClick={() => handleMakeIntructor(_id)} className="btn btn-success btn-xs" disabled={(role == "instructor")} > Make Instructor </button>
 
             </td>
 
