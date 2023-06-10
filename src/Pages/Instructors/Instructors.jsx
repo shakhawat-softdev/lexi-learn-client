@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import HeroInstructorCard from "./HeroInstructorCard";
+import Heading from "../../SharedComponsnts/Heading";
 
 
 const Instructors = () => {
@@ -9,18 +10,19 @@ const Instructors = () => {
       fetch('http://localhost:5000/users/instructor')
          .then(res => res.json())
          .then(data => {
-            // console.log(data);
             setInstructors(data)
-         })
+         });
 
    }, [])
 
    return (
       <div>
-         <div className="text-center">
-            <h2 className="text-4xl font-semibold my-4">Our Instructors </h2>
+
+         <div className="my-5">
+            <Heading heading={"Our Available Intructors"} />
          </div>
-         <div className="grid grid-cols-3 gap-2">
+
+         <div className="grid md:grid-cols-3">
             {instructos.map(item => <HeroInstructorCard item={item} key={item._id} />)}
          </div>
 
