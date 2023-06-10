@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import logo1 from '../../../assets/images/logos/logo1.jpg'
+import logo2 from '../../../assets/images/logos/logo2.jpg'
+import logo3 from '../../../assets/images/logos/logo3.jpg'
+import logo4 from '../../../assets/images/logos/logo4.jpg'
 
 
 const Navbar = () => {
@@ -12,14 +16,18 @@ const Navbar = () => {
          .catch()
    };
 
-   const loginLogout = <ul className="menu menu-horizontal px-1  font-semibold">
-
-      {
-         user ? <Link onClick={handleLogout}><li><span>Logout</span></li></Link> :
+   const loginLogout =
+      <ul className="menu menu-horizontal px-1  font-semibold">
+         {user ?
+            <Link onClick={handleLogout}><li><span>Logout</span></li></Link> :
             <Link to='/login'><li><span>Login</span></li></Link>
-      }
+         }
+      </ul>
 
-   </ul>
+   // {
+   //    isAdmin ? <li><Link to="/dashboard/adminhome">Dashboard</Link></li> :
+   //       <li><Link to="/dashboard/userhome">Dashboard</Link></li>
+   // }
 
    const navItems = <ul className="menu menu-horizontal  font-semibold px-1">
       <Link to='/'><li><span>Home</span></li></Link>
@@ -38,7 +46,7 @@ const Navbar = () => {
 
    return (
       <>
-         <div className="navbar bg-slate-100 p-5">
+         <div className="navbar bg-slate-100 p-5 h-[80px]">
             <div className="navbar-start">
                <div className="dropdown">
                   <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -48,10 +56,10 @@ const Navbar = () => {
                </div>
 
                <div className=" invisible lg:visible">
-                  {/* <img className="w-[150px] h-[60px]" src={navLogo} alt="" /> */}
+                  <img className="h-16 rounded-lg" src={logo1} alt="" />
                </div>
 
-               <a className="btn btn-ghost normal-case text-xl invisible lg:visible ">LexiLearn</a>
+               {/* <a className="btn btn-ghost normal-case text-xl invisible lg:visible ">LexiLearn</a> */}
             </div>
 
             <div className="navbar-center hidden lg:flex">

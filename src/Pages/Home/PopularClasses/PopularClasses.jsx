@@ -15,6 +15,7 @@ const PopularClasses = () => {
       <div>
          <div className="text-center my-6">
             <h2 className="text-4xl font-semibold">Popular <span className="text-yellow-500">Classes</span> </h2>
+            <div className="divider w-1/2 mx-auto"></div>
          </div>
 
          <div className="grid grid-cols-3">

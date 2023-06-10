@@ -12,10 +12,11 @@ const PopularInstuctors = () => {
       <div>
          <div className="text-center my-6">
             <h2 className="text-4xl font-semibold">Popular <span className="text-yellow-500">Instructors </span> </h2>
+            <div className="divider w-1/2 mx-auto"></div>
+         </div>
 
-            <div className="grid grid-cols-3">
-               {instructors.map(item => <InstructorCard item={item} key={item._id} />)}
-            </div>
+         <div className="grid grid-cols-3">
+            {instructors.map(item => <InstructorCard item={item} key={item._id} />)}
          </div>
       </div>
    );

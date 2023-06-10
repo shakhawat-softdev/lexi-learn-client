@@ -5,6 +5,7 @@ import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
 import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 
 
 
@@ -12,12 +13,25 @@ const Register = () => {
    const [message, setMessage] = useState('');
    const { registerNewUser, logout } = useAuth();
    const navigate = useNavigate()
+   const [isVisible, setVisible] = useState(true);
 
 
    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
+
+   const handleVisible = () => {
+      setVisible(!isVisible);
+   };
+
    const onSubmit = data => {
-      const { name, photoURL, email, password } = data;
+      const { name, photoURL, email, password, password2 } = data;
+      console.log(data);
+
+      if (password !== password2) {
+         setMessage("Password doesn't matched!")
+         return;
+      }
+      setMessage('')
 
       //Register User
       registerNewUser(email, password)
@@ -66,6 +80,8 @@ const Register = () => {
       };
 
 
+
+
    };
 
    return (
@@ -105,16 +121,42 @@ const Register = () => {
                      {errors.email && <span className="text-red-500d">Email is required</span>}
 
                   </div>
+
                   <div className="form-control">
                      <label className="label">
                         <span className="label-text">Password</span>
                      </label>
-                     <input type="password"  {...register("password", {
+
+                     <input type={isVisible ? "password" : "text"}   {...register("password", {
                         required: true,
                         minLength: 6,
                         maxLength: 20,
                         pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z].*[a-z])/
                      })} placeholder="required" className="input input-bordered" />
+
+                     {isVisible ? <EyeIcon onClick={handleVisible} className="h-6 w-6 text-blue-500 absolute right-0 mt-12 mr-20" /> : <EyeSlashIcon onClick={handleVisible} className="h-6 w-6 text-blue-500 absolute right-0 mt-12 mr-20" />}
+
+                     {errors.password?.type === 'minLength' && <p role="alert">Password must be minimum 6 characters</p>}
+                     {errors.password?.type === 'maxLength' && <p role="alert">Password must be less then 20 characters</p>}
+                     {errors.password?.type === 'pattern' && <p role="alert">Password must have one upper case, one lower case, one number and one special character!</p>}
+
+                     <label className="label">
+                        <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                     </label>
+                  </div>
+                  <div className="form-control">
+                     <label className="label">
+                        <span className="label-text">Re Enter Password</span>
+                     </label>
+
+                     <input type={isVisible ? "password" : "text"}   {...register("password2", {
+                        required: true,
+                        minLength: 6,
+                        maxLength: 20,
+                        pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z].*[a-z])/
+                     })} placeholder="required" className="input input-bordered" />
+
+                     {isVisible ? <EyeIcon onClick={handleVisible} className="h-6 w-6 text-blue-500 absolute right-0 mt-12 mr-20" /> : <EyeSlashIcon onClick={handleVisible} className="h-6 w-6 text-blue-500 absolute right-0 mt-12 mr-20" />}
 
                      {errors.password?.type === 'minLength' && <p role="alert">Password must be minimum 6 characters</p>}
                      {errors.password?.type === 'maxLength' && <p role="alert">Password must be less then 20 characters</p>}

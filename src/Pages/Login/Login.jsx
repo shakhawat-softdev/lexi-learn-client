@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
+import { BeakerIcon, EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid'
+
 
 
 const Login = () => {
@@ -14,6 +16,11 @@ const Login = () => {
    const location = useLocation();
    const from = location.state?.from?.pathname || '/';
    const navigate = useNavigate();
+
+   const [isVisible, setVisible] = useState(true);
+   const handleVisible = () => {
+      setVisible(!isVisible);
+   };
 
 
    const onSubmit = data => {
@@ -78,20 +85,36 @@ const Login = () => {
                         <input type="email"  {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" />
                         {errors.email && <span className="text-red-500d">Email is required</span>}
                      </div>
-
+                     {/* <EyeIcon className="h-6 w-6 text-blue-500" /> */}
                      <div className="form-control">
                         <label className="label">
-                           <span className="label-text">Password</span>
+                           <span className="label-text">Password </span>
                         </label>
-                        <input type="password"  {...register("password", {
-                           required: true,
+                        <input type={isVisible ? "password" : "text"}   {...register("password", { required: true, })} placeholder="required" className="input input-bordered relative" />
 
-                        })} placeholder="required" className="input input-bordered" />
+                        {isVisible ? <EyeIcon onClick={handleVisible} className="h-6 w-6 text-blue-500 absolute right-0 mt-12 mr-20" /> : <EyeSlashIcon onClick={handleVisible} className="h-6 w-6 text-blue-500 absolute right-0 mt-12 mr-20" />}
 
                         <label className="label">
                            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                         </label>
                      </div>
+
+                     {/* <div>
+                        <label>Password:</label>
+                        <input
+                           type={isPasswordVisible ? 'text' : 'password'}
+                           name="password"
+                           ref={register({ required: 'Password is required' })}
+                        />
+                        {errors.password && <p>{errors.password.message}</p>}
+                     </div>
+                     <div>
+                        <input type="checkbox" onChange={togglePasswordVisibility} />
+                        <label>Show Password</label>
+                     </div> */}
+
+
+
 
                      <div className="form-control mt-6">
                         {message && <h2 className="text-red-600">{message}</h2>}
