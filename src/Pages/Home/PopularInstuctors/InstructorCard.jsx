@@ -2,21 +2,20 @@ import React from 'react';
 
 const InstructorCard = ({ item }) => {
 
-   const { instructorImage, instructorName } = item;
-   // console.log(item);
+   const { instructorImage, instructorName, enrolled } = item;
+
    return (
-      <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="card glass w-96 bg-base-100 shadow-xl m-1">
          <figure className="px-10 pt-10">
             <img src={instructorImage} alt="Shoes" className="rounded-xl" />
          </figure>
          <div className="card-body items-center text-center">
             <h2 className="card-title">{instructorName}</h2>
-
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            {/* <div className="card-actions">
-                  <button className="btn btn-primary">Buy Now</button>
-               </div> */}
          </div>
+         <button className="btn bg-sky-300 absolute right-0 mt-2 mr-10">
+            Enrolled:
+            <div className="badge">{enrolled}</div>
+         </button>
       </div>
    );
 };

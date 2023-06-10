@@ -3,9 +3,9 @@ import InstructorCard from "./InstructorCard";
 
 const PopularInstuctors = () => {
    const { data: instructors = [], refetch } = useQuery(['instructors'], async () => {
-      const res = await fetch('http://localhost:5000/classes')
+      const res = await fetch('http://localhost:5000/instructors')
       return res.json()
-   })
+   });
 
 
    return (
@@ -15,7 +15,7 @@ const PopularInstuctors = () => {
             <div className="divider w-1/2 mx-auto"></div>
          </div>
 
-         <div className="grid grid-cols-3">
+         <div className="grid md:grid-cols-3">
             {instructors.map(item => <InstructorCard item={item} key={item._id} />)}
          </div>
       </div>

@@ -3,17 +3,17 @@ import joinusImg1 from '../../../assets/images/joinus/join1.jpg'
 
 const JoinOurProgram = () => {
    return (
-      <div>
-         <div className="text-center mt-5">
+      <div className='my-12'>
+         <div className="text-center">
             <h2 className="text-4xl font-semibold">Join Our <span className="text-yellow-500">Program</span> </h2>
             <div className="divider w-1/2 mx-auto"></div>
          </div>
 
-         <div className="w-full flex gap-5 ">
+         <div className="w-full md:flex gap-5 ">
             <div className="w-3/5 bg-slate-400">
                <img src={joinusImg1} alt="" />
             </div>
-            <div className="w-2/5 bg-slate-200 rounded-md ">
+            <div className=" md:w-2/5 bg-slate-200 rounded-md ">
                <div className='m-5'>
 
                   <h2 className='text-3xl font-bold mb-5'>Enroll in Our Language Program Today!"</h2>

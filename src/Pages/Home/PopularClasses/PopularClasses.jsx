@@ -18,7 +18,7 @@ const PopularClasses = () => {
             <div className="divider w-1/2 mx-auto"></div>
          </div>
 
-         <div className="grid grid-cols-3">
+         <div className="grid md:grid-cols-3">
             {classes.map(item => <ClassCard item={item} key={item._id} />)}
          </div>
 
