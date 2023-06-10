@@ -56,16 +56,14 @@ const ApprovedClassCard = ({ item }) => {
 
    // console.log(item)
    return (
-      <div className="card w-96 glass">
-         <figure><img src={instructorImage} alt="car!" /></figure>
-         <div className="card-body">
-            <h2 className="card-title">Course Name: {className}</h2>
-            <h2 className="card-title">Instructor Name: {instructorName}</h2>
-            <p>Available seats:{availableSeats}</p>
-            <p>Price: ${price}</p>
-            <div className="card-actions justify-end">
-               <button onClick={() => handleSelectClass()} className="btn btn-active btn-secondary" disabled={(availableSeats < 0) || isAdmin || isInstructor}>Select</button>
-            </div>
+      <div className="card w-96 glass rounded-sm m-4">
+         <figure><img className="w-4/5 mt-5" src={classImage} alt="Instroctor Image" /></figure>
+         <div className="card-body space-y-0">
+            <h2 className="font-semibold">Course Name: <span className='font-normal'>{className}</span></h2>
+            <h2 className="font-semibold">Instructor Name: <span className='font-normal'>{instructorName}</span></h2>
+            <h2 className="font-semibold">Available seats:<span className='font-normal'>{availableSeats}</span></h2>
+            <h2 className="font-semibold">Price:<span className='font-normal'> ${price}</span></h2>
+            <button onClick={() => handleSelectClass()} className="btn btn-success btn-wide btn-sm" disabled={(availableSeats < 0) || isAdmin || isInstructor}>Select</button>
          </div>
       </div>
    );

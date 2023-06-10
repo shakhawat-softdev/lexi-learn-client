@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ApprovedClassCard from "./ApprovedClassCard";
+import Heading from "../../SharedComponsnts/Heading";
 
 
 const Classes = () => {
@@ -15,12 +16,9 @@ const Classes = () => {
    }, [])
 
    return (
-      <div>
-         <div className="text-center">
-            <h2 className="text-4xl font-semibold my-4">All Available Classes {approvedClasses.length} </h2>
-         </div>
-
-         <div className="grid grid-cols-3 gap-3">
+      <div className="my-12">
+         <Heading heading={`Available Classes ${approvedClasses.length}`} />
+         <div className="grid md:grid-cols-3 w-11/12 mx-auto">
             {approvedClasses?.map(item => <ApprovedClassCard item={item} key={item._id} />)}
          </div>
       </div>
