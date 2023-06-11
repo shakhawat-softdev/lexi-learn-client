@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../../../Hooks/useAuth";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import MyClassCard from "./MyClassCard";
+import Heading from "../../../../SharedComponsnts/Heading";
 
 
 const MyClasses = () => {
@@ -31,10 +32,8 @@ const MyClasses = () => {
 
 
    return (
-      <div>
-         <div className="text-center">
-            <h2 className="text-4xl font-semibold my-4">My Class: {myClasses.length} </h2>
-         </div>
+      <div className="m-5">
+         <Heading heading={`My Class: ${myClasses.length}`} />
 
          <div className="flex gap-3">
             {myClasses?.map(item => <MyClassCard item={item} key={item._id} />)}

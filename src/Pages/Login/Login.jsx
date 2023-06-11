@@ -44,7 +44,7 @@ const Login = () => {
       loginWithGoogle()
          .then(result => {
             const loggedUser = result.user;
-            console.log(loggedUser);
+            // console.log(loggedUser);
 
             const userInfo = { userName: loggedUser.displayName, userEmail: loggedUser.email, userImage: loggedUser?.photoURL, role: 'student' };
             fetch('http://localhost:5000/users', {
@@ -98,22 +98,6 @@ const Login = () => {
                            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                         </label>
                      </div>
-
-                     {/* <div>
-                        <label>Password:</label>
-                        <input
-                           type={isPasswordVisible ? 'text' : 'password'}
-                           name="password"
-                           ref={register({ required: 'Password is required' })}
-                        />
-                        {errors.password && <p>{errors.password.message}</p>}
-                     </div>
-                     <div>
-                        <input type="checkbox" onChange={togglePasswordVisibility} />
-                        <label>Show Password</label>
-                     </div> */}
-
-
 
 
                      <div className="form-control mt-6">

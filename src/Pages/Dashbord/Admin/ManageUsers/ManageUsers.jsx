@@ -3,6 +3,7 @@ import ManageClassTable from '../ManageClasses/ManageClassTable';
 import ManageUsersTable from './ManageUsersTable';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import useAuth from '../../../../Hooks/useAuth';
+import Heading from '../../../../SharedComponsnts/Heading';
 
 const ManageUsers = () => {
 
@@ -13,24 +14,22 @@ const ManageUsers = () => {
    useEffect(() => {
       axiosSecure.get('/users')
          .then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             setAllUsers(res.data)
          })
          .catch(error => console.log(error))
    }, [user])
 
-   console.log(allUsers);
+   // console.log(allUsers);
 
 
 
 
 
    return (
-      <div>
-         <div className="text-center">
-            <h2 className="text-4xl font-semibold my-4">Manage Users </h2>
-         </div>
+      <div className='m-5'>
 
+         <Heading heading={"Manage Users"} />
 
          <div className="overflow-x-auto">
             <table className="table">

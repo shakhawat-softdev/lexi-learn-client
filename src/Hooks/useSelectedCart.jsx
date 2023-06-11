@@ -12,13 +12,11 @@ const useSelectedCart = () => {
       queryKey: ['selectedClass', user?.email],
       enabled: !loading,
       queryFn: async () => {
-         const res = await axiosSecure(`/selectedClass?email=${user?.email}`)
+         const res = await axiosSecure.get(`/selectedClass?email=${user?.email}`)
          return res.data;
       },
 
    })
-
-   // console.log("Result", selectedClass)
 
    return [selectedClass, refetch]
 }

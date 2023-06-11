@@ -4,13 +4,16 @@ import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import ManageClassTable from "./ManageClassTable";
 
 
+
 const ManageClasses = () => {
+   // const [, refetch] = useSelectedCart()
    const { user } = useAuth();
    const [allClasses, setAllClasses] = useState([])
 
    const [axiosSecure] = useAxiosSecure();
+
    useEffect(() => {
-      axiosSecure.get('/classes')
+      axiosSecure.get('/allclasses')
          .then(res => {
             console.log(res.data);
             setAllClasses(res.data)
@@ -18,7 +21,7 @@ const ManageClasses = () => {
          .catch(error => console.log(error))
    }, [user])
 
-   console.log(allClasses);
+   // console.log(allClasses);
 
 
    return (

@@ -2,25 +2,25 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAdmin from "../../Hooks/useAdmin";
+import useInstructor from "../../Hooks/useInstructor";
+
 
 
 const ApprovedClassCard = ({ item }) => {
    const location = useLocation();
    const from = location.state?.from?.pathname || '/';
    const navigate = useNavigate();
-   const [isAdmin] = useAdmin();
+   const { user } = useAuth()
 
-   console.log("Is admin?????", isAdmin);
-   // const isAdmin = false;
-   const isInstructor = false;
+   const [isAdmin] = useAdmin();
+   const [isInstructor] = useInstructor()
+
+   // console.log("Is admin?", isAdmin);
+   // console.log("Is Instructor?", isInstructor);
+
+
 
    const { _id, className, classImage, instructorName, instructorImage, instructorEmail, availableSeats, enrolled, price } = item;
-
-
-
-
-
-   const { user } = useAuth()
 
    const handleSelectClass = () => {
       // console.log(user.email);

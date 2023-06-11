@@ -17,7 +17,7 @@ const Payment = () => {
          <div className="text-center">
             <h2 className="text-4xl font-semibold my-4">Payment</h2>
          </div>
-         <h2 className="text-lg font-bold">Total Course Free: ${total}</h2>
+         {/* <h2 className="text-lg font-bold">Total Course Free: ${total}</h2> */}
          <Elements stripe={stripePromise} >
             <Checkout total={total} />
          </Elements>

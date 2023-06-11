@@ -140,9 +140,9 @@ const Register = () => {
                      {errors.password?.type === 'maxLength' && <p role="alert">Password must be less then 20 characters</p>}
                      {errors.password?.type === 'pattern' && <p role="alert">Password must have one upper case, one lower case, one number and one special character!</p>}
 
-                     <label className="label">
+                     {/* <label className="label">
                         <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                     </label>
+                     </label> */}
                   </div>
                   <div className="form-control">
                      <label className="label">
@@ -162,9 +162,9 @@ const Register = () => {
                      {errors.password?.type === 'maxLength' && <p role="alert">Password must be less then 20 characters</p>}
                      {errors.password?.type === 'pattern' && <p role="alert">Password must have one upper case, one lower case, one number and one special character!</p>}
 
-                     <label className="label">
+                     {/* <label className="label">
                         <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                     </label>
+                     </label> */}
                   </div>
 
                   <div className="form-control mt-6">

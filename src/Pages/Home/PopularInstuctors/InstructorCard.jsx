@@ -1,7 +1,7 @@
 import React from 'react';
 
-const InstructorCard = ({ item }) => {
 
+const InstructorCard = ({ item }) => {
    const { instructorImage, instructorName, enrolled } = item;
 
    return (
@@ -21,3 +21,7 @@ const InstructorCard = ({ item }) => {
 };
 
 export default InstructorCard;
+
+
+
+

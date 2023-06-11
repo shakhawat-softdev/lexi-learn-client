@@ -14,12 +14,27 @@ const Checkout = ({ total }) => {
    const [cardError, setCardError] = useState('');
    const [processing, setProcessing] = useState(false);
    const [transectionId, setTransectionId] = useState('')
-
    const [axiosSecure] = useAxiosSecure();
    const [clientSecret, setClientSecret] = useState('');
-   const [selectedClass, refetch] = useSelectedCart()
+
+   const [selectedClass, refetch] = useSelectedCart();
+   const [price, setPrice] = useState(0);
+   const [course, setCouser] = useState({})
 
    // console.log("Enrolled Class", selectedClass)
+   const id = localStorage.getItem("selectedClsID")
+   useEffect(() => {
+      const findcCourse = selectedClass?.find(item => item._id == id);
+      setCouser(findcCourse)
+      const classPrice = selectedClass?.find(item => item._id == id)?.price || 0
+      setPrice(classPrice)
+   }, [selectedClass])
+   // console.log("Local Storage", id);
+   // console.log("Class Price", price)
+   // console.log("TOTAL", total);
+   // console.log("PRICE", price);
+   // console.log("COURSE", course);
+
 
    useEffect(() => {
       if (total > 0) {
@@ -73,12 +88,24 @@ const Checkout = ({ total }) => {
       setProcessing(false)
 
       if (paymentIntent.status === "succeeded") {
+
          setTransectionId(paymentIntent.id)
          Swal.fire({ position: 'center', icon: 'success', title: 'Payment Successfull!!', showConfirmButton: false, timer: 1500 });
          //TODO: next step
+         // const paymentHistory = {
+         //    user: user?.email,
+         //    transectionId: paymentIntent?.id,
+         //    price: price,
+         //    date: new Date(),
+         //    coureseName: course.className,
+         //    instructorName: course.instructorName,
+         //    courseId: course._id,
+         //    orderStatus: "Paid",
+         // }
+
          const paymentHistory = {
             user: user?.email,
-            transectionId: paymentIntent.id,
+            transectionId: paymentIntent?.id,
             totalprice: total,
             date: new Date(),
             coureseName: selectedClass.map(item => item.className),
@@ -100,7 +127,8 @@ const Checkout = ({ total }) => {
    };
 
    return (
-      <>
+      <div>
+         <h2 className="ml-3 text-lg">Course Price: ${price || 0}</h2>
          <form className="w-2/3 m-8" onSubmit={handleSubmit}>
             <CardElement
                options={{ style: { base: { fontSize: '16px', color: '#424770', '::placeholder': { color: '#aab7c4', }, }, invalid: { color: '#9e2146', }, }, }}
@@ -111,7 +139,7 @@ const Checkout = ({ total }) => {
          </form>
          {cardError && <p className="red-600 ml-8">{cardError}!</p>}
          {transectionId && <p className="text-blue-700 ml-8">Transection Compelete with transection Id: {transectionId}!</p>}
-      </>
+      </div>
    );
 };
 

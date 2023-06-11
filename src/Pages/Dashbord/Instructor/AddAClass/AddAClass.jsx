@@ -10,7 +10,7 @@ const AddAClass = () => {
    const { user } = useAuth();
    const [axiosSecure] = useAxiosSecure();
 
-   const image_hosting_url = `https://api.imgbb.com/1/upload?expiration=600&key=${image_hosting_token}`
+   const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`
 
    const { register, handleSubmit, reset } = useForm();
    const onSubmit = data => {
@@ -32,18 +32,6 @@ const AddAClass = () => {
 
                const classData = { className, classImage: imgURL, instructorName, instructorImage: `${user.photoURL}`, instructorEmail, status: "pending", availableSeats: parseFloat(availableSeats), enrolled: 0, price: parseFloat(price), feedBack: "NO" }
 
-               // console.log("class data", classData)
-
-               // axiosSecure.post(`/classes`, classData)
-               // .then(res => {
-               //    // console.log('After POSTing new Manu Item', data.data);
-               //    if (res.data.insertedId) {
-               //       console.log(res.data)
-               //       Swal.fire({ position: 'center', icon: 'success', title: 'Item Added Successfully!', showConfirmButton: false, timer: 1500 })
-               //       reset()
-               //    }
-               // })
-
 
                fetch('http://localhost:5000/classes', {
                   method: 'POST',
@@ -53,14 +41,11 @@ const AddAClass = () => {
                   .then(res => res.json())
                   .then(data => {
                      if (data.insertedId) {
-                        Swal.fire({ position: 'center', icon: 'success', title: 'Item Added Successfully!', showConfirmButton: false, timer: 1500 })
+                        Swal.fire({ position: 'center', icon: 'success', title: 'Class Added Successfully!', showConfirmButton: false, timer: 1500 })
                         reset()
 
                      }
                   })
-
-
-
 
             }
 

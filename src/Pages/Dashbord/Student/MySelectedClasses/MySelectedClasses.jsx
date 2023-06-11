@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import useSelectedCart from "../../../../Hooks/useSelectedCart";
+import { Link } from "react-router-dom";
+import Heading from "../../../../SharedComponsnts/Heading";
 
-//All selected Clss import From DB Collection
+/* All selected Clss import From DB Collection */
 const MySelectedClasses = () => {
    const [selectedClass, refetch] = useSelectedCart()
-   // console.log("All selected Class", selectedClass)
 
 
-
-
-   //Delete Secific Class/Course From DB
-
+   /* Delete Secific Class/Course From DB */
    const handleDeleteClass = (item) => {
       Swal.fire({
          title: 'Are you sure?',
@@ -24,6 +22,7 @@ const MySelectedClasses = () => {
                .then(res => res.json())
                .then(data => {
                   console.log(data);
+
                   if (data.deletedCount > 0) {
                      refetch();
                      Swal.fire('Deleted!', 'Course has been deleted.', 'success')
@@ -33,21 +32,25 @@ const MySelectedClasses = () => {
          }
       })
 
+   };
+
+   const handlePay = (id) => {
+      // console.log("Selected Clss-id", id)
+      localStorage.setItem("selectedClsID", id)
+
    }
 
 
-
-
-
    const total = selectedClass.reduce((accumulator, currentPrice) => accumulator + currentPrice.price, 0)
-   // console.log(total);
+
    return (
-      <div>
-         <div className="text-center">
-            <h2 className="text-4xl font-semibold my-4">My Selected Classes: {selectedClass?.length} </h2>
-         </div>
+      <div className="m-5">
+
+         <Heading heading={`My Selected Classes: ${selectedClass?.length}`} />
+
+
          <div className="text-end">
-            <button className="btn btn-wide btn-active">Pay ${total}</button>
+            <Link to={'/dashbord/payment'}>  <button className="btn btn-info btn-wide btn-xs">Total Pay ${total}</button></Link>
          </div>
 
          <div className="overflow-x-auto">
@@ -60,6 +63,7 @@ const MySelectedClasses = () => {
                      <th>Course Instructor</th>
                      <th>Course Fee</th>
                      <th>Remove</th>
+                     <th>Pay</th>
                   </tr>
                </thead>
                <tbody>
@@ -80,9 +84,11 @@ const MySelectedClasses = () => {
                         </div>
                      </td>
                      <td>${item.price}</td>
-
                      <td>
-                        <button onClick={() => handleDeleteClass(item)} className="btn btn-ghost btn-xs">Delete</button>
+                        <button onClick={() => handleDeleteClass(item)} className="btn btn-error btn-xs">Delete</button>
+                     </td>
+                     <td>
+                        <Link to={'/dashbord/payment'}> <button onClick={() => handlePay(item._id)} className="btn btn-accent btn-xs">Pay</button></Link>
                      </td>
                   </tr>)}
                </tbody>

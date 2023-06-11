@@ -1,14 +1,19 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import logo1 from '../../../assets/images/logos/logo1.jpg'
-import logo2 from '../../../assets/images/logos/logo2.jpg'
-import logo3 from '../../../assets/images/logos/logo3.jpg'
-import logo4 from '../../../assets/images/logos/logo4.jpg'
+import useAdmin from "../../../Hooks/useAdmin";
+import useInstructor from "../../../Hooks/useInstructor";
+import useStudent from "../../../Hooks/useStudent";
 
 
 const Navbar = () => {
    const { user, logout } = useAuth()
-   // console.log("navigation bar", user);
+   const [isAdmin] = useAdmin();
+   const [isInstructor] = useInstructor()
+   const [isStudent] = useStudent();
+   // console.log("In Navbar: is Instructor? ", isInstructor);
+   // console.log("In Navbar: is Admin? ", isAdmin);
+   console.log("In Navbar: is Student? ", isStudent);
 
    const handleLogout = () => {
       logout()
@@ -17,30 +22,32 @@ const Navbar = () => {
    };
 
    const loginLogout =
-      <ul className="menu menu-horizontal px-1  font-semibold">
+      <ul className="menu menu-horizontal px-1  font-semibold text-lg">
          {user ?
             <Link onClick={handleLogout}><li><span>Logout</span></li></Link> :
             <Link to='/login'><li><span>Login</span></li></Link>
          }
       </ul>
 
-   // {
-   //    isAdmin ? <li><Link to="/dashboard/adminhome">Dashboard</Link></li> :
-   //       <li><Link to="/dashboard/userhome">Dashboard</Link></li>
-   // }
-
-   const navItems = <ul className="menu menu-horizontal  font-semibold px-1">
+   const navItems = <ul className="menu menu-horizontal font-semibold px-1 text-lg">
       <Link to='/'><li><span>Home</span></li></Link>
       <Link to='/instructors'><li><span>Instructors</span></li></Link>
       <Link to='/classes'><li><span>Classes</span></li></Link>
-      <Link to='/dashbord'><li><span>Dashboard </span></li></Link>
+
+      {isAdmin && <Link to='/dashbord/manageClasses'><li><span>Admin Dashboard</span></li></Link>}
+      {isInstructor && <Link to='/dashbord/addAClass'><li><span>Instructor Dashboard</span></li></Link>}
+      {isStudent && <Link to='/dashbord/mySelectedClasses'><li><span>Student Dashboard</span></li></Link>}
    </ul>
 
    const navItemsDropdown = <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
       <Link to='/'><li><span>Home</span></li></Link>
       <Link to='/instructors'><li><span>Instructors</span></li></Link>
       <Link to='/classes'><li><span>Classes</span></li></Link>
-      <Link to='/dashbord'><li><span>Dashboard </span></li></Link>
+
+      {isAdmin && <Link to='/dashbord/manageClasses'><li><span>Admin Dashboard</span></li></Link>}
+      {isInstructor && <Link to='/dashbord/addAClass'><li><span>Instructor Dashboard</span></li></Link>}
+      {isStudent && <Link to='/dashbord/mySelectedClasses'><li><span>Student Dashboard</span></li></Link>}
+
    </ul>
 
 
@@ -59,7 +66,6 @@ const Navbar = () => {
                   <img className="h-16 rounded-lg" src={logo1} alt="" />
                </div>
 
-               {/* <a className="btn btn-ghost normal-case text-xl invisible lg:visible ">LexiLearn</a> */}
             </div>
 
             <div className="navbar-center hidden lg:flex">
@@ -77,12 +83,7 @@ const Navbar = () => {
                      </div>
                   </div>}
             </div>
-
          </div>
-
-
-
-
       </>
    );
 };
