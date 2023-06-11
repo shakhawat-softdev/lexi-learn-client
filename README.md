@@ -30,7 +30,7 @@
 
 *Live Site Link: https://lexi-learn-66370.web.app
 
-*Live Server Link: https://lexi-learn-server-syedarafatcse.vercel.app
+*Live Server Link: http://localhost:5000
 *Client-Side-Repository: https://github.com/programming-hero-web-course1/b712-summer-camp-client-side-syedarafatcse
 *Server Sied-Repository: https://github.com/programming-hero-web-course1/b7a12-summer-camp-server_side-syedarafatcse
 

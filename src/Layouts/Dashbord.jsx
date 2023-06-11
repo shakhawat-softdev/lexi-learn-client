@@ -41,9 +41,9 @@ const Dashbord = () => {
          <Link to={'/dashbord/enrolled'}>  <span className='inline'><ArchiveBoxIcon className="h-5 w-5 inline" /></span>
             <li className='btn'> My Enrolled Classes</li>
          </Link>
-         <Link to={'/dashbord/payment'}>  <span className='inline'> <CreditCardIcon className="h-5 w-5 inline" /></span>
+         {/* <Link to={'/dashbord/payment'}>  <span className='inline'> <CreditCardIcon className="h-5 w-5 inline" /></span>
             <li className='btn'> Payment</li>
-         </Link>
+         </Link> */}
          <Link to={'/dashbord/paymentsHistory'}> <span className='inline'><DocumentIcon className="h-5 w-5 inline" /></span>
             <li className='btn'>Payment History</li>
 

@@ -5,10 +5,10 @@ import ClassCard from "./ClassCard";
 const PopularClasses = () => {
 
    const { data: classes = [], refetch } = useQuery(['classes'], async () => {
-      const res = await fetch('https://lexi-learn-server-syedarafatcse.vercel.app/classes')
+      const res = await fetch('http://localhost:5000/classes')
       return res.json()
-   })
-   // console.log(classes);
+   });
+
 
 
    return (

@@ -3,6 +3,7 @@ import { authContext } from '../../Provider/AuthProvider';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import HistotyCard from './HistotyCard';
+import Heading from '../../SharedComponsnts/Heading';
 
 const PaymentsHistory = () => {
    const { user, loading } = useContext(authContext)
@@ -21,12 +22,12 @@ const PaymentsHistory = () => {
 
 
    return (
-      <div>
-         <div className="text-center">
-            <h2 className="text-4xl font-semibold my-4">Payment History: {paymentHistory?.length}</h2>
-         </div>
-         <div className='flex gap-5'>
+      <div className='m-5'>
+         <Heading heading={"Payment History"} />
+         <div className='grid grid-cols-2 gap-5 m-3'>
+
             {paymentHistory.map((item, index) => <HistotyCard item={item} index={index} key={item._id} />)}
+
          </div>
       </div>
    );

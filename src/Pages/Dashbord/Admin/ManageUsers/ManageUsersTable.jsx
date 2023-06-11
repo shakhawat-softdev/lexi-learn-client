@@ -9,7 +9,7 @@ const ManageUsersTable = ({ item, index }) => {
    const handleMakeAdmin = id => {
       console.log("ID", id);
 
-      fetch(`https://lexi-learn-server-syedarafatcse.vercel.app/users/${id}`, {
+      fetch(`http://localhost:5000/users/${id}`, {
          method: 'PATCH',
          headers: {
             'content-type': 'application/json'
@@ -30,7 +30,7 @@ const ManageUsersTable = ({ item, index }) => {
    const handleMakeIntructor = id => {
       console.log("ID", id);
 
-      fetch(`https://lexi-learn-server-syedarafatcse.vercel.app/users/${id}`, {
+      fetch(`http://localhost:5000/users/${id}`, {
          method: 'PATCH',
          headers: {
             'content-type': 'application/json'

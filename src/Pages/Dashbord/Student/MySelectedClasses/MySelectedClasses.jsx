@@ -14,9 +14,10 @@ const MySelectedClasses = () => {
       Swal.fire({
          title: 'Are you sure?',
       }).then((result) => {
+
          if (result.isConfirmed) {
 
-            fetch(`https://lexi-learn-server-syedarafatcse.vercel.app/selectedClass/${item._id}`, {
+            fetch(`http://localhost:5000/selectedClass/${item._id}`, {
                method: 'DELETE',
             })
                .then(res => res.json())
@@ -41,17 +42,11 @@ const MySelectedClasses = () => {
    }
 
 
-   const total = selectedClass.reduce((accumulator, currentPrice) => accumulator + currentPrice.price, 0)
 
    return (
       <div className="m-5">
 
          <Heading heading={`My Selected Classes: ${selectedClass?.length}`} />
-
-
-         <div className="text-end">
-            <Link to={'/dashbord/payment'}>  <button className="btn btn-info btn-wide btn-xs">Total Pay ${total}</button></Link>
-         </div>
 
          <div className="overflow-x-auto">
             <table className="table">
@@ -88,7 +83,7 @@ const MySelectedClasses = () => {
                         <button onClick={() => handleDeleteClass(item)} className="btn btn-error btn-xs">Delete</button>
                      </td>
                      <td>
-                        <Link to={'/dashbord/payment'}> <button onClick={() => handlePay(item._id)} className="btn btn-accent btn-xs">Pay</button></Link>
+                        <Link to={`/dashbord/payment/${item._id}`}> <button onClick={() => handlePay(item._id)} className="btn btn-accent btn-xs">Pay</button></Link>
                      </td>
                   </tr>)}
                </tbody>

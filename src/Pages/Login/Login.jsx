@@ -47,7 +47,7 @@ const Login = () => {
             // console.log(loggedUser);
 
             const userInfo = { userName: loggedUser.displayName, userEmail: loggedUser.email, userImage: loggedUser?.photoURL, role: 'student' };
-            fetch('https://lexi-learn-server-syedarafatcse.vercel.app/users', {
+            fetch('http://localhost:5000/users', {
                method: 'POST',
                headers: { 'content-type': 'application/json' },
                body: JSON.stringify(userInfo)//

@@ -19,7 +19,7 @@ const MyClasses = () => {
    //    .catch(error => console.log(error))
 
 
-   const url = `https://lexi-learn-server-syedarafatcse.vercel.app/myClasses?email=${user?.email}`;
+   const url = `http://localhost:5000/myClasses?email=${user?.email}`;
    useEffect(() => {
       fetch(url)
          .then(res => res.json())

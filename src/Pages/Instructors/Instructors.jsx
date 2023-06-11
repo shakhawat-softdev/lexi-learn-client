@@ -8,7 +8,7 @@ const Instructors = () => {
 
    const [instructos, setInstructors] = useState([]);
    useEffect(() => {
-      fetch('https://lexi-learn-server-syedarafatcse.vercel.app/users/instructor')
+      fetch('http://localhost:5000/users/instructor')
          .then(res => res.json())
          .then(data => {
             setInstructors(data)

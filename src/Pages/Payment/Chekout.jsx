@@ -4,9 +4,11 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useSelectedCart from "../../Hooks/useSelectedCart";
+import { useQuery } from "@tanstack/react-query";
 
 
-const Checkout = ({ total }) => {
+
+const Checkout = ({ total, course }) => {
    // console.log(total)
    const { user } = useAuth()
    const stripe = useStripe();
@@ -16,24 +18,8 @@ const Checkout = ({ total }) => {
    const [transectionId, setTransectionId] = useState('')
    const [axiosSecure] = useAxiosSecure();
    const [clientSecret, setClientSecret] = useState('');
+   const [, refetch] = useSelectedCart();
 
-   const [selectedClass, refetch] = useSelectedCart();
-   const [price, setPrice] = useState(0);
-   const [course, setCouser] = useState({})
-
-   // console.log("Enrolled Class", selectedClass)
-   const id = localStorage.getItem("selectedClsID")
-   useEffect(() => {
-      const findcCourse = selectedClass?.find(item => item._id == id);
-      setCouser(findcCourse)
-      const classPrice = selectedClass?.find(item => item._id == id)?.price || 0
-      setPrice(classPrice)
-   }, [selectedClass])
-   // console.log("Local Storage", id);
-   // console.log("Class Price", price)
-   // console.log("TOTAL", total);
-   // console.log("PRICE", price);
-   // console.log("COURSE", course);
 
 
    useEffect(() => {
@@ -42,9 +28,11 @@ const Checkout = ({ total }) => {
             .then(responce => {
                setClientSecret(responce.data.clientSecret);
             })
+
       }
 
    }, [total, axiosSecure]);
+
 
    const handleSubmit = async (event) => {
       event.preventDefault()
@@ -90,55 +78,76 @@ const Checkout = ({ total }) => {
       if (paymentIntent.status === "succeeded") {
 
          setTransectionId(paymentIntent.id)
-         Swal.fire({ position: 'center', icon: 'success', title: 'Payment Successfull!!', showConfirmButton: false, timer: 1500 });
+         // Swal.fire({ position: 'center', icon: 'success', title: 'Payment Successfull!!', showConfirmButton: false, timer: 1500 });
          //TODO: next step
-         // const paymentHistory = {
-         //    user: user?.email,
-         //    transectionId: paymentIntent?.id,
-         //    price: price,
-         //    date: new Date(),
-         //    coureseName: course.className,
-         //    instructorName: course.instructorName,
-         //    courseId: course._id,
-         //    orderStatus: "Paid",
-         // }
-
          const paymentHistory = {
             user: user?.email,
             transectionId: paymentIntent?.id,
-            totalprice: total,
+            totalprice: course.price,
             date: new Date(),
-            coureseName: selectedClass.map(item => item.className),
-            instructorName: selectedClass.map(item => item.instructorName),
-            courseId: selectedClass.map(item => item._id),
+            coureseName: course.className,
+            instructorName: course.instructorName,
+            courseId: course._id,
             orderStatus: "Paid",
-         }
+         };
 
-         axiosSecure.post('/payments', { selectedClass, paymentHistory })
+         console.log(paymentHistory)
+
+
+
+         axiosSecure.post('/payments', { paymentHistory })
             .then(res => {
                console.log(res.data)
                if (res.data.insertedId) {
                   //Display Confarm
 
+                  fetch(`http://localhost:5000/selectedClass/${course._id}`, {
+                     method: 'DELETE',
+                  })
+                     .then(res => res.json())
+                     .then(data => {
+                        console.log(data);
+
+                        if (data.deletedCount > 0) {
+                           refetch();
+                           // Swal.fire('Remove', 'Course has been Remove from slected class.', 'success')
+                        }
+                     });
                }
-            })
+            });
+
+         axiosSecure.post('/enrolled', { course })
+            .then(res => {
+               console.log(res.data)
+               if (res.data.insertedId) {
+                  //Display Confarm
+
+                  Swal.fire('Enroll', 'Course has been Enrolled successfully!.', 'Wellcome!')
+               }
+            });
+
+         document.getElementById("pament-course-form").reset();
+
       }
 
    };
 
    return (
-      <div>
-         <h2 className="ml-3 text-lg">Course Price: ${price || 0}</h2>
-         <form className="w-2/3 m-8" onSubmit={handleSubmit}>
-            <CardElement
-               options={{ style: { base: { fontSize: '16px', color: '#424770', '::placeholder': { color: '#aab7c4', }, }, invalid: { color: '#9e2146', }, }, }}
-            />
-            <button className="btn btn-outline btn-primary btn-sm my-5" type="submit" disabled={!stripe || !clientSecret || processing}>
-               Pay
-            </button>
-         </form>
-         {cardError && <p className="red-600 ml-8">{cardError}!</p>}
-         {transectionId && <p className="text-blue-700 ml-8">Transection Compelete with transection Id: {transectionId}!</p>}
+      <div className="flex flex-col justify-center items-center m-5">
+         <div className="bg-slate-50 border-2 border-t-emerald-200 p-4 m-5 w-full">
+            <h2 className=" text-lg ml-7 mt-5">Course Price: ${course?.price || 0}</h2>
+            <form className="w-2/3 m-8" onSubmit={handleSubmit} id="pament-course-form">
+               <CardElement
+                  options={{ style: { base: { fontSize: '16px', color: '#424770', '::placeholder': { color: '#aab7c4', }, }, invalid: { color: '#9e2146', }, }, }}
+               />
+               <button className="btn btn-outline btn-primary btn-sm my-5" type="submit" disabled={!stripe || !clientSecret || processing}>
+                  Pay
+               </button>
+            </form>
+            {cardError && <p className="red-600 ml-8">{cardError}!</p>}
+            {transectionId && <p className="ml-8 font-semibold">Your Payment Is successfull! <br />
+               transection Id: {transectionId}!</p>}
+         </div>
       </div>
    );
 };
