@@ -33,7 +33,7 @@ const AddAClass = () => {
                const classData = { className, classImage: imgURL, instructorName, instructorImage: `${user.photoURL}`, instructorEmail, status: "pending", availableSeats: parseFloat(availableSeats), enrolled: 0, price: parseFloat(price), feedBack: "NO" }
 
 
-               fetch('http://localhost:5000/classes', {
+               fetch('https://lexi-learn-server-syedarafatcse.vercel.app/classes', {
                   method: 'POST',
                   headers: { 'content-type': 'application/json' },
                   body: JSON.stringify(classData)//

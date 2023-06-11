@@ -27,7 +27,7 @@ const ApprovedClassCard = ({ item }) => {
       const selectClass = { studentEmail: user?.email, classId: _id, className, classImage, price, instructorName, instructorImage, instructorEmail, availableSeats, enrolled }
 
       if (user && user.email) {
-         fetch('http://localhost:5000/selectedClass', {
+         fetch('https://lexi-learn-server-syedarafatcse.vercel.app/selectedClass', {
             method: 'POST',
             headers: { "content-type": "application/json" },
             body: JSON.stringify(selectClass)
