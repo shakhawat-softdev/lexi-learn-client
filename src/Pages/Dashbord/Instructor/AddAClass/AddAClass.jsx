@@ -31,7 +31,7 @@ const AddAClass = () => {
                const imgURL = imgResponse.data.url;
                const { className, classImage, instructorName, instructorImage, instructorEmail, status, availableSeats, enrolled, price } = data;
 
-               const classData = { className, classImage: imgURL, instructorName, instructorImage: `${user.photoURL}`, instructorEmail, status: "pending", availableSeats: parseFloat(availableSeats), enrolled: 0, price: parseFloat(price), feedBack: "NO" }
+               const classData = { className, classImage: imgURL, instructorName, instructorImage: `${user.photoURL}`, instructorEmail, status: "pending", availableSeats: parseFloat(availableSeats), enrolled: 0, price: parseFloat(price), feedBack: "NO FEEDBACK" }
 
 
                fetch('http://localhost:5000/classes', {

@@ -1,17 +1,18 @@
-// import ExtraBanner from "../ExtraBanner";
+import ExtraBanner from "../ExtraBanner";
 import JoinOurProgram from "../JoinOurProgram/JoinOurProgram";
-import MainSlideBanner from "../MainSlideBanner";
+
 import PopularClasses from "../PopularClasses/PopularClasses";
 import PopularInstuctors from "../PopularInstuctors/PopularInstuctors";
+import Slider from "../Slider";
 
 const Home = () => {
    return (
       <div>
-         {/* <ExtraBanner /> */}
-         <MainSlideBanner />
+         <Slider />
          <PopularClasses />
          <PopularInstuctors />
          <JoinOurProgram />
+         <ExtraBanner />
       </div>
    );
 };

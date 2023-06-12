@@ -14,7 +14,7 @@ const MyClassCard = ({ item }) => {
                <h2 className='font-semibold'>Availabale Seats: <span className='font-normal'>{availableSeats}</span> </h2>
                <h2 className='font-semibold'>Price: <span className='font-normal'>${price}</span> </h2>
                <h2 className='font-semibold'>Status: <span className='font-normal text-red-600'>{status}</span> </h2>
-               {/* {feedBack && <h2 className='font-semibold'>Feedback: <span className='font-normal'>{feedBack}</span> </h2>} */}
+               {feedBack && <h2 className='font-semibold'>Feedback: <span className='font-normal'>{feedBack}</span> </h2>}
 
                <div className="card-actions justify-end">
                   <Link to={`/dashbord/update/${_id}`}><div className="btn btn-xs badge badge-outline">Update</div></Link>

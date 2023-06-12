@@ -23,19 +23,19 @@ const ExtraBanner = () => {
          >
             <SwiperSlide>
                <img src={slider1} alt="" />
-               <h3 className="text-4xl text-center uppercase -mt-16 text-white">Salad</h3>
+               {/* <h3 className="text-4xl text-center uppercase -mt-16 text-white">Salad</h3> */}
             </SwiperSlide>
             <SwiperSlide>
                <img src={slider2} alt="" />
-               <h3 className="text-4xl text-center uppercase -mt-16 text-white">Pizzas</h3>
+               {/* <h3 className="text-4xl text-center uppercase -mt-16 text-white">Pizzas</h3> */}
             </SwiperSlide>
             <SwiperSlide>
                <img src={slider3} alt="" />
-               <h3 className="text-4xl text-center uppercase -mt-16 text-white">Soups</h3>
+               {/* <h3 className="text-4xl text-center uppercase -mt-16 text-white">Soups</h3> */}
             </SwiperSlide>
             <SwiperSlide>
                <img src={slider4} alt="" />
-               <h3 className="text-4xl text-center uppercase -mt-16 text-white">Deserts</h3>
+               {/* <h3 className="text-4xl text-center uppercase -mt-16 text-white">Deserts</h3> */}
             </SwiperSlide>
          </Swiper>
       </div>
