@@ -17,7 +17,7 @@ const MySelectedClasses = () => {
 
          if (result.isConfirmed) {
 
-            fetch(`https://lexi-learn-server-be5jhux47-syedarafatcse.vercel.app/selectedClass/${item._id}`, {
+            fetch(`https://lexi-learn-server.vercel.app/selectedClass/${item._id}`, {
                method: 'DELETE',
             })
                .then(res => res.json())

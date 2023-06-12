@@ -100,7 +100,7 @@ const Checkout = ({ total, course }) => {
                if (res.data.insertedId) {
                   //Display Confarm
 
-                  fetch(`https://lexi-learn-server-be5jhux47-syedarafatcse.vercel.app/selectedClass/${course._id}`, {
+                  fetch(`https://lexi-learn-server.vercel.app/selectedClass/${course._id}`, {
                      method: 'DELETE',
                   })
                      .then(res => res.json())

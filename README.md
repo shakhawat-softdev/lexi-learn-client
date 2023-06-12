@@ -29,12 +29,13 @@
 
 
 *Live Site Link: https://lexi-learn-66370.web.app
-*Live Server Link: https://lexi-learn-server-be5jhux47-syedarafatcse.vercel.app/
+*Live Server Link: https://lexi-learn-server.vercel.app/
 
-*LOCAL HOST Link: https://lexi-learn-server-be5jhux47-syedarafatcse.vercel.app
 
-*Client-Side-Repository: https://github.com/programming-hero-web-course1/b712-summer-camp-client-side-syedarafatcse
-*Server Sied-Repository: https://github.com/programming-hero-web-course1/b7a12-summer-camp-server_side-syedarafatcse
+
+*GitHub-Client-Side-Repository: https://github.com/programming-hero-web-course1/b712-summer-camp-client-side-syedarafatcse
+
+*GitHub-Server Sied-Repository: https://github.com/programming-hero-web-course1/b7a12-summer-camp-server_side-syedarafatcse
 
 
 <!-- ADMIN LOGIN -->
@@ -45,6 +46,4 @@
 *INS EMAIL: instructor@gmail.com
 *INS PASSW: Ins@1018.com
 
-<!-- STUDENT LOGIN -->
-*STD EMAIL: student@gmail.com
-*STD PASSW: Std@1018
+

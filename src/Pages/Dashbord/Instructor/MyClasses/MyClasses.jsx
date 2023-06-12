@@ -10,7 +10,7 @@ const MyClasses = () => {
    const { user } = useAuth()
    const [myClasses, setMyClasses] = useState([])
 
-   const url = `https://lexi-learn-server-be5jhux47-syedarafatcse.vercel.app/myClasses?email=${user?.email}`;
+   const url = `https://lexi-learn-server.vercel.app/myClasses?email=${user?.email}`;
    useEffect(() => {
       fetch(url)
          .then(res => res.json())
@@ -26,7 +26,7 @@ const MyClasses = () => {
       <div className="m-5">
          <Heading heading={`My Class: ${myClasses.length}`} />
 
-         <div className="flex gap-3">
+         <div className="grid grid-cols-3">
             {myClasses?.map(item => <MyClassCard item={item} key={item._id} />)}
          </div>
 

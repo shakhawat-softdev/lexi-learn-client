@@ -4,12 +4,13 @@ import useSelectedCart from '../../../../Hooks/useSelectedCart';
 
 const ManageClassTable = ({ item, index }) => {
    const { _id, className, classImage, instructorName, instructorEmail, status, availableSeats, price } = item;
+
    const [selectedClass, refetch] = useSelectedCart();
 
    const handleApprove = id => {
 
 
-      fetch(`https://lexi-learn-server-be5jhux47-syedarafatcse.vercel.app/classes/${id}`, {
+      fetch(`https://lexi-learn-server.vercel.app/classes/${id}`, {
          method: 'PATCH',
          headers: {
             'content-type': 'application/json'
@@ -22,15 +23,19 @@ const ManageClassTable = ({ item, index }) => {
 
             // console.log(data)
             if (data.modifiedCount > 0) {
+
                refetch();
+
                Swal.fire({ position: 'center', icon: 'success', title: 'Action Successful!', showConfirmButton: false, timer: 1500 })
             }
          })
 
    };
 
+   // console.log(refetch)
+
    const handleDenei = id => {
-      fetch(`https://lexi-learn-server-be5jhux47-syedarafatcse.vercel.app/classes/${id}`, {
+      fetch(`https://lexi-learn-server.vercel.app/classes/${id}`, {
          method: 'PATCH',
          headers: {
             'content-type': 'application/json'
@@ -55,7 +60,7 @@ const ManageClassTable = ({ item, index }) => {
       const form = event.target;
       const adminFeedback = form.feedback.value;
 
-      fetch(`https://lexi-learn-server-be5jhux47-syedarafatcse.vercel.app/classes/${_id}`, {
+      fetch(`https://lexi-learn-server.vercel.app/classes/${_id}`, {
          method: 'PATCH',
          headers: {
             'content-type': 'application/json'
@@ -76,7 +81,7 @@ const ManageClassTable = ({ item, index }) => {
 
 
    return (
-      <tr>
+      <tr className='overflow-hidden'>
          <td> {index + 1} </td>
          <td>
             <div className="flex items-center space-x-3">
@@ -92,16 +97,18 @@ const ManageClassTable = ({ item, index }) => {
          <td>{instructorEmail}</td>
          <td className='text-center'>{availableSeats}</td>
          <td>${price}</td>
-         <td className="flex flex-row justify-center items-center gap-1 text-center content-center m-auto">
-            <button className="btn btn-accent btn-xs">{status}</button>
+         <td className="">
+            <div className='flex gap-1 '>
+               <button className="badge badge-primary">{status}</button>
 
-            <button onClick={() => handleApprove(_id)} className="btn btn-success btn-xs" disabled={(status == 'approved') || (status == 'denied')} >Approve</button>
+               <button onClick={() => handleApprove(_id)} className="btn btn-success btn-xs" disabled={(status == 'approved') || (status == 'denied')} >Approve</button>
 
-            <button onClick={() => handleDenei(_id)} className="btn btn-error btn-xs" disabled={(status == 'approved') || (status == 'denied')} >Denei</button>
+               <button onClick={() => handleDenei(_id)} className="btn btn-error btn-xs" disabled={(status == 'approved') || (status == 'denied')} >Denei</button>
+            </div>
          </td>
          <th>
             {/* <button className="btn  btn-xs">Feed back</button> */}
-            <label htmlFor="my_modal_6" className="btn  btn-xs ">Feed back</label>
+            <label htmlFor="my_modal_6" className="btn  btn-xs ">Feedback</label>
          </th>
 
 
@@ -121,7 +128,7 @@ const ManageClassTable = ({ item, index }) => {
                      <textarea name='feedback' className="textarea textarea-bordered h-24" placeholder="Write Feedback"></textarea>
                   </div>
 
-                  <input className="btn btn-accent btn-sm" type="submit" value="Submit" />
+                  <input className="btn btn-accent btn-sm mt-2" type="submit" value="Submit" />
                </form>
                <div className="modal-action">
                   <label htmlFor="my_modal_6" className="btn btn-secondary btn-sm">Close</label>

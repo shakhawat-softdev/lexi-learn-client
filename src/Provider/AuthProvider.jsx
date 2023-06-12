@@ -54,7 +54,7 @@ const AuthProvider = ({ children }) => {
          // get and set token
 
          if (curerntUser) {
-            axios.post('https://lexi-learn-server-be5jhux47-syedarafatcse.vercel.app/jwt', { email: curerntUser.email })
+            axios.post('https://lexi-learn-server.vercel.app/jwt', { email: curerntUser.email })
 
                .then(data => {
                   // console.log("Token", data.data.token);

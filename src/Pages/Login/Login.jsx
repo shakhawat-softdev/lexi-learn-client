@@ -47,7 +47,7 @@ const Login = () => {
             // console.log(loggedUser);
 
             const userInfo = { userName: loggedUser.displayName, userEmail: loggedUser.email, userImage: loggedUser?.photoURL, role: 'student' };
-            fetch('https://lexi-learn-server-be5jhux47-syedarafatcse.vercel.app/users', {
+            fetch('https://lexi-learn-server.vercel.app/users', {
                method: 'POST',
                headers: { 'content-type': 'application/json' },
                body: JSON.stringify(userInfo)//
@@ -73,9 +73,9 @@ const Login = () => {
    return (
       <>
          <h1 className="text-3xl font-bold my-3 ml-4 text-center">Login now!</h1>
-         <div className='flex justify-center items-center text-center mb-5'>
-            <section className="card flex-shrink-0 w-96 max-w-sm hadow-md border border-sky-300 bg-base-100 ">
-               <div className='card-body'>
+         <div className='flex justify-center items-center text-center mb-5 '>
+            <section className="card flex-shrink-0 w-96 max-w-sm hadow-md border border-sky-300 bg-base-100 rounded-none">
+               <div className='card-body rounded-none'>
 
                   <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                      <div className="form-control">

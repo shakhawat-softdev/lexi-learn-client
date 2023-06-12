@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { authContext } from "../Provider/AuthProvider";
 
-const axiosSecure = axios.create({ baseURL: 'https://lexi-learn-server-be5jhux47-syedarafatcse.vercel.app' });
+const axiosSecure = axios.create({ baseURL: 'https://lexi-learn-server.vercel.app' });
 const useAxiosSecure = () => {
    const { logOut } = useContext(authContext);
    const navigate = useNavigate();

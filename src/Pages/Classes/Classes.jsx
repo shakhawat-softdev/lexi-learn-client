@@ -6,7 +6,7 @@ import Heading from "../../SharedComponsnts/Heading";
 const Classes = () => {
    const [approvedClasses, setapprovedClasses] = useState([])
    useEffect(() => {
-      fetch('https://lexi-learn-server-be5jhux47-syedarafatcse.vercel.app/classes/approved')
+      fetch('https://lexi-learn-server.vercel.app/classes/approved')
          .then(res => res.json())
          .then(data => {
             // console.log(data);

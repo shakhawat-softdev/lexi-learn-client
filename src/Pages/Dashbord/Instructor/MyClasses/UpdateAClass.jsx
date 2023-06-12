@@ -15,7 +15,7 @@ const UpdateAClass = () => {
    const { user } = useAuth()
    const [myClasses, setMyClasses] = useState([]);
 
-   const url = `https://lexi-learn-server-be5jhux47-syedarafatcse.vercel.app/myClasses?email=${user?.email}`;
+   const url = `https://lexi-learn-server.vercel.app/myClasses?email=${user?.email}`;
    useEffect(() => {
       fetch(url)
          .then(res => res.json())
@@ -55,7 +55,7 @@ const UpdateAClass = () => {
 
                console.log('UPADTE DATA', UPdatedData)
 
-               fetch(`https://lexi-learn-server-be5jhux47-syedarafatcse.vercel.app/updateClass/${updateClsID?.id}`, {
+               fetch(`https://lexi-learn-server.vercel.app/updateClass/${updateClsID?.id}`, {
                   method: 'PATCH',
                   headers: {
                      'content-type': 'application/json'
@@ -80,7 +80,7 @@ const UpdateAClass = () => {
    };
 
 
-
+   console.log(updateClass)
 
    return (
       <div className="m-5">
@@ -93,15 +93,17 @@ const UpdateAClass = () => {
                      <span className="label-text font-semibold">Class Name</span>
                   </label>
                   <input type="text" defaultValue={updateClass?.className} placeholder="Class Name" className="input input-bordered  "
-                     {...register("className", { required: true })}
+                     {...register("className", { required: false })}
                   />
                </div>
+
 
                <div className="form-control">
                   <label className="label">
                      <span className="label-text font-semibold">Class Image</span>
                   </label>
-                  <input type="file" className="file-input file-input-bordered"
+
+                  <input type="file" defaultValue={updateClass?.classImage} className="file-input file-input-bordered"
                      {...register("classImage", { required: true })}
                   />
                </div>
@@ -111,7 +113,7 @@ const UpdateAClass = () => {
                      <span className="label-text font-semibold">Available Seats</span>
                   </label>
                   <input type="number" defaultValue={updateClass?.availableSeats} placeholder="Available Seats" className="input input-bordered  "
-                     {...register("availableSeats", { required: true })}
+                     {...register("availableSeats", { required: false })}
                   />
                </div>
 
@@ -120,11 +122,11 @@ const UpdateAClass = () => {
                      <span className="label-text font-semibold">Price</span>
                   </label>
                   <input type="number" defaultValue={updateClass?.price} placeholder="Price" className="input input-bordered  "
-                     {...register("price", { required: true })}
+                     {...register("price", { required: false })}
                   />
                </div>
 
-               <input className="btn btn-small mt-4" type="submit" value="Add Item" />
+               <input className="btn btn-small mt-4" type="submit" value="Update" />
             </form>
          </div>
 

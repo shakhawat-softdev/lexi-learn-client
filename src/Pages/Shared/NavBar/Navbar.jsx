@@ -34,9 +34,15 @@ const Navbar = () => {
       <Link to='/instructors'><li><span>Instructors</span></li></Link>
       <Link to='/classes'><li><span>Classes</span></li></Link>
 
-      {isAdmin && <Link to='/dashbord/manageClasses'><li><span>Admin Dashboard</span></li></Link>}
-      {isInstructor && <Link to='/dashbord/addAClass'><li><span>Instructor Dashboard</span></li></Link>}
-      {isStudent && <Link to='/dashbord/mySelectedClasses'><li><span>Student Dashboard</span></li></Link>}
+      {user && <>
+         {isAdmin && <Link to='/dashbord/manageClasses'><li><span>Dashboard</span></li></Link>}
+         {isInstructor && <Link to='/dashbord/addAClass'><li><span>Dashboard</span></li></Link>}
+         {isStudent && <Link to='/dashbord/mySelectedClasses'><li><span>Dashboard</span></li></Link>}
+      </>}
+
+
+
+
    </ul>
 
    const navItemsDropdown = <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
@@ -44,9 +50,11 @@ const Navbar = () => {
       <Link to='/instructors'><li><span>Instructors</span></li></Link>
       <Link to='/classes'><li><span>Classes</span></li></Link>
 
-      {isAdmin && <Link to='/dashbord/manageClasses'><li><span>Admin Dashboard</span></li></Link>}
-      {isInstructor && <Link to='/dashbord/addAClass'><li><span>Instructor Dashboard</span></li></Link>}
-      {isStudent && <Link to='/dashbord/mySelectedClasses'><li><span>Student Dashboard</span></li></Link>}
+      {user && <>
+         {isAdmin && <Link to='/dashbord/manageClasses'><li><span>Dashboard</span></li></Link>}
+         {isInstructor && <Link to='/dashbord/addAClass'><li><span>Dashboard</span></li></Link>}
+         {isStudent && <Link to='/dashbord/mySelectedClasses'><li><span>Dashboard</span></li></Link>}
+      </>}
 
    </ul>
 
