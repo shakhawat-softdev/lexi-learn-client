@@ -94,7 +94,6 @@ const Checkout = ({ total, course }) => {
          console.log(paymentHistory)
 
 
-
          axiosSecure.post('/payments', { paymentHistory })
             .then(res => {
                console.log(res.data)
@@ -121,7 +120,6 @@ const Checkout = ({ total, course }) => {
                console.log(res.data)
                if (res.data.insertedId) {
                   //Display Confarm
-
                   Swal.fire('Enroll', 'Course has been Enrolled successfully!.', 'Wellcome!')
                }
             });

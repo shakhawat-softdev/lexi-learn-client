@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MyClassCard = ({ item }) => {
-   const { className, classImage, instructorName, instructorImage, instructorEmail, status, availableSeats, enrolled, price, feedBack } = item;
+   const { _id, className, classImage, instructorName, instructorImage, instructorEmail, status, availableSeats, enrolled, price, feedBack } = item;
    return (
       <div>
          <div className="card w-72 bg-base-100 rounded-md border-2 ">
@@ -16,7 +17,7 @@ const MyClassCard = ({ item }) => {
                {/* {feedBack && <h2 className='font-semibold'>Feedback: <span className='font-normal'>{feedBack}</span> </h2>} */}
 
                <div className="card-actions justify-end">
-                  <div className="btn btn-xs badge badge-outline">Update</div>
+                  <Link to={`/dashbord/update/${_id}`}><div className="btn btn-xs badge badge-outline">Update</div></Link>
                </div>
             </div>
          </div>

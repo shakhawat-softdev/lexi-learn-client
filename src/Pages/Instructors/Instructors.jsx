@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import HeroInstructorCard from "./HeroInstructorCard";
 import Heading from "../../SharedComponsnts/Heading";
-import { motion } from 'framer-motion';
+
 
 
 const Instructors = () => {

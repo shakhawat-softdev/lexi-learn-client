@@ -19,6 +19,7 @@ import MyClasses from "../Pages/Dashbord/Instructor/MyClasses/MyClasses";
 import AdminHome from "../Pages/Dashbord/Admin/AdminHome/AdminHome";
 import ManageClasses from "../Pages/Dashbord/Admin/ManageClasses/ManageClasses";
 import ManageUsers from "../Pages/Dashbord/Admin/ManageUsers/ManageUsers";
+import UpdateAClass from "../Pages/Dashbord/Instructor/MyClasses/UpdateAClass";
 
 export const router = createBrowserRouter([
    {
@@ -89,6 +90,10 @@ export const router = createBrowserRouter([
          {
             path: 'myClasses',
             element: <MyClasses />
+         },
+         {
+            path: 'update/:id',
+            element: <UpdateAClass />
          },
 
          //Admin Dashbord

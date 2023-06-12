@@ -10,15 +10,6 @@ const MyClasses = () => {
    const { user } = useAuth()
    const [myClasses, setMyClasses] = useState([])
 
-
-   // axiosSecure.get(`/myClasses?email=${user?.email}`)
-   //    .then(res => {
-   //       console.log(res.data);
-   //       setMyClasses(res.data)
-   //    })
-   //    .catch(error => console.log(error))
-
-
    const url = `http://localhost:5000/myClasses?email=${user?.email}`;
    useEffect(() => {
       fetch(url)
@@ -26,7 +17,7 @@ const MyClasses = () => {
          .then(data => setMyClasses(data))
    }, [user])
 
-   console.log(myClasses)
+   // console.log(myClasses)
 
 
 
