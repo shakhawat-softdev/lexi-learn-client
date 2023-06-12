@@ -46,4 +46,9 @@
 *INS EMAIL: instructor@gmail.com
 *INS PASSW: Ins@1018.com
 
+<!-- STUDENT LOGIN -->
+*STD EMAIL: student@gmail.com
+*STD PASSW: Std@1018
+*STD EMAIL: student2@gmail.com
+*STD PASSW: Std@1018
 
