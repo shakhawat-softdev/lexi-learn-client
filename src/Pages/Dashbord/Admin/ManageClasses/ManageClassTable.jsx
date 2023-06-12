@@ -9,7 +9,7 @@ const ManageClassTable = ({ item, index }) => {
    const handleApprove = id => {
 
 
-      fetch(`http://localhost:5000/classes/${id}`, {
+      fetch(`https://lexi-learn-server-be5jhux47-syedarafatcse.vercel.app/classes/${id}`, {
          method: 'PATCH',
          headers: {
             'content-type': 'application/json'
@@ -30,7 +30,7 @@ const ManageClassTable = ({ item, index }) => {
    };
 
    const handleDenei = id => {
-      fetch(`http://localhost:5000/classes/${id}`, {
+      fetch(`https://lexi-learn-server-be5jhux47-syedarafatcse.vercel.app/classes/${id}`, {
          method: 'PATCH',
          headers: {
             'content-type': 'application/json'
@@ -55,7 +55,7 @@ const ManageClassTable = ({ item, index }) => {
       const form = event.target;
       const adminFeedback = form.feedback.value;
 
-      fetch(`http://localhost:5000/classes/${_id}`, {
+      fetch(`https://lexi-learn-server-be5jhux47-syedarafatcse.vercel.app/classes/${_id}`, {
          method: 'PATCH',
          headers: {
             'content-type': 'application/json'

@@ -40,7 +40,7 @@ const Register = () => {
             const loggedUser = result.user;
             // console.log(loggedUser);
             const userInfo = { userName: name, userEmail: email, userImage: photoURL, role: 'student' };
-            fetch('http://localhost:5000/users', {
+            fetch('https://lexi-learn-server-be5jhux47-syedarafatcse.vercel.app/users', {
                method: 'POST',
                headers: { 'content-type': 'application/json' },
                body: JSON.stringify(userInfo)//

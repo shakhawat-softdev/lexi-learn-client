@@ -10,7 +10,7 @@ const MyClasses = () => {
    const { user } = useAuth()
    const [myClasses, setMyClasses] = useState([])
 
-   const url = `http://localhost:5000/myClasses?email=${user?.email}`;
+   const url = `https://lexi-learn-server-be5jhux47-syedarafatcse.vercel.app/myClasses?email=${user?.email}`;
    useEffect(() => {
       fetch(url)
          .then(res => res.json())
